@@ -7,14 +7,25 @@ import 'package:logger/logger.dart';
 class ChatState extends Notifier<ChatModel> implements ChatMember {
   ChatState({
     // 初期値
-    this.init = const ChatModel(text: 'Hello, Hanashi AI!'),
+    required this.init,
     // ロガー
     required this.logger,
   });
 
   /// 状態の初期値を返す
   @override
-  ChatModel build() => init;
+  ChatModel build() {
+    init
+        .sendMessage(message: "自己紹介してください")
+        .then((value) => state = value)
+        .catchError((error) {
+          logger.e("メッセージ送信エラー: $error");
+          state = state.copyWith(text: 'メッセージ送信に失敗しました。');
+          return state;
+        });
+
+    return init;
+  }
 
   /// チャットの初期メッセージ
   @override
@@ -29,7 +40,7 @@ class ChatState extends Notifier<ChatModel> implements ChatMember {
 final chatProvider = NotifierProvider<ChatState, ChatModel>(
   () => ChatState(
     // 初期値
-    init: const ChatModel(text: 'Hello, Hanashi AI!'),
+    init: ChatModel(text: 'Hello, Hanashi AI!'),
     logger: Logger(),
   ),
 );

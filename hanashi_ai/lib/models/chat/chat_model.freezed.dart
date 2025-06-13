@@ -76,8 +76,8 @@ as String,
 /// @nodoc
 
 
-class _ChatModel implements ChatModel {
-  const _ChatModel({required this.text});
+class _ChatModel extends ChatModel {
+  const _ChatModel({required this.text}): super._();
   
 
 @override final  String text;
