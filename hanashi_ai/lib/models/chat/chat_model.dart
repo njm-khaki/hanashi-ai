@@ -1,17 +1,25 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hanashi_ai/apis/gemini/gemini_client.dart';
+import 'package:hanashi_ai/enums/generate_ai/generate_ai.dart';
 
 part 'chat_model.freezed.dart';
 
 @freezed
 sealed class ChatModel with _$ChatModel {
-  const ChatModel._();
+  // freezedのプライベートコンストラクタ
+  const ChatModel._() : super();
 
-  const factory ChatModel({required String text}) = _ChatModel;
+  // チャットモデルのファクトリ
+  const factory ChatModel({
+    // チャットテキスト
+    required String text,
+    // 生成AIモデル
+    required GenerateAi model,
+  }) = _ChatModel;
 
+  // メッセージを送信し、レスポンスを受け取って新しいChatModelを返す
   Future<ChatModel> sendMessage({required String message}) async {
-    final response = await GeminiClient().sendMessage(message: message);
+    final response = await model.client.sendMessage(message: message);
 
-    return copyWith(text: response);
+    return copyWith(text: response); // レスポンスでtextを更新
   }
 }

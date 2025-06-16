@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChatModel {
 
- String get text;
+ String get text; GenerateAi get model;
 /// Create a copy of ChatModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ChatModelCopyWith<ChatModel> get copyWith => _$ChatModelCopyWithImpl<ChatModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatModel&&(identical(other.text, text) || other.text == text));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatModel&&(identical(other.text, text) || other.text == text)&&(identical(other.model, model) || other.model == model));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,text);
+int get hashCode => Object.hash(runtimeType,text,model);
 
 @override
 String toString() {
-  return 'ChatModel(text: $text)';
+  return 'ChatModel(text: $text, model: $model)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $ChatModelCopyWith<$Res>  {
   factory $ChatModelCopyWith(ChatModel value, $Res Function(ChatModel) _then) = _$ChatModelCopyWithImpl;
 @useResult
 $Res call({
- String text
+ String text, GenerateAi model
 });
 
 
@@ -63,10 +63,11 @@ class _$ChatModelCopyWithImpl<$Res>
 
 /// Create a copy of ChatModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? text = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? model = null,}) {
   return _then(_self.copyWith(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String,
+as String,model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
+as GenerateAi,
   ));
 }
 
@@ -77,10 +78,11 @@ as String,
 
 
 class _ChatModel extends ChatModel {
-  const _ChatModel({required this.text}): super._();
+  const _ChatModel({required this.text, required this.model}): super._();
   
 
 @override final  String text;
+@override final  GenerateAi model;
 
 /// Create a copy of ChatModel
 /// with the given fields replaced by the non-null parameter values.
@@ -92,16 +94,16 @@ _$ChatModelCopyWith<_ChatModel> get copyWith => __$ChatModelCopyWithImpl<_ChatMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatModel&&(identical(other.text, text) || other.text == text));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatModel&&(identical(other.text, text) || other.text == text)&&(identical(other.model, model) || other.model == model));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,text);
+int get hashCode => Object.hash(runtimeType,text,model);
 
 @override
 String toString() {
-  return 'ChatModel(text: $text)';
+  return 'ChatModel(text: $text, model: $model)';
 }
 
 
@@ -112,7 +114,7 @@ abstract mixin class _$ChatModelCopyWith<$Res> implements $ChatModelCopyWith<$Re
   factory _$ChatModelCopyWith(_ChatModel value, $Res Function(_ChatModel) _then) = __$ChatModelCopyWithImpl;
 @override @useResult
 $Res call({
- String text
+ String text, GenerateAi model
 });
 
 
@@ -129,10 +131,11 @@ class __$ChatModelCopyWithImpl<$Res>
 
 /// Create a copy of ChatModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? text = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? model = null,}) {
   return _then(_ChatModel(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as String,
+as String,model: null == model ? _self.model : model // ignore: cast_nullable_to_non_nullable
+as GenerateAi,
   ));
 }
 

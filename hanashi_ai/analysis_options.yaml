@@ -9,6 +9,19 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer: 
+  # The analyzer can be configured to ignore certain files or directories.
+  # This is useful for excluding generated files, third-party code, or other
+  # files that should not be analyzed.
+  #
+  # The following example excludes the `build/` directory and all files in it,
+  # as well as the `test/` directory.
+  errors:
+    invalid_annotation_target: ignore
+  exclude:
+    # Exclude generated files from analysis
+    - "**/*.freezed.dart"
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`

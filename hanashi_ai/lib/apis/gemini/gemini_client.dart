@@ -15,13 +15,15 @@ final class GeminiClient extends GenerateAiClient {
   // ロガーインスタンス
   final Logger _logger = Logger();
 
-  // チャットセッション
-  final ChatSession _session = GenerativeModel(
-    // 使用するGeminiモデル
+  static final GenerativeModel _model = GenerativeModel(
+    // 使用するGeminiモデル名を.envから取得
     model: dotenv.get('GEMINI_MODEL_NAME'),
-    // APIキー
+    // APIキーを.envから取得
     apiKey: dotenv.get('GEMINI_API_KEY'),
-  ).startChat();
+  );
+
+  // チャットセッション
+  final ChatSession _session = _model.startChat();
 
   /// チャット メッセージ送信
   @override
