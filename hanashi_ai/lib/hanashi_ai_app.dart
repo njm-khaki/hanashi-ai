@@ -18,6 +18,8 @@ class HanashiAiApp extends StatelessWidget {
             // ダークテーマ
             brightness: Brightness.light,
           ),
+          // フォントファミリーを設定
+          fontFamily: 'Noto Sans JP',
         ),
         darkTheme: ThemeData(
           // プライマリカラー
@@ -26,6 +28,8 @@ class HanashiAiApp extends StatelessWidget {
             // ダークテーマ
             brightness: Brightness.dark,
           ),
+          // フォントファミリーを設定
+          fontFamily: 'Noto Sans JP',
         ),
         // システムのテーマモードに従う
         themeMode: ThemeMode.system,
