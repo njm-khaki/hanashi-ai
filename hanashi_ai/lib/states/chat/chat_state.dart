@@ -3,6 +3,7 @@ import 'package:flutter_tts/flutter_tts.dart'; // テキスト読み上げライ
 import 'package:hanashi_ai/enums/generate_ai/generate_ai.dart'; // 生成AIのenumをインポート
 import 'package:hanashi_ai/models/chat/chat_model.dart'; // チャットモデルをインポート
 import 'package:hanashi_ai/states/chat/chat_member.dart'; // ChatMemberインターフェースをインポート
+import 'package:hanashi_ai/utils/trim_brackets.dart';
 import 'package:logger/logger.dart'; // ログ出力用ライブラリをインポート
 
 /// チャット画面の状態を管理するクラス
@@ -38,13 +39,18 @@ class ChatState extends Notifier<ChatModel> implements ChatMember {
 まずは、来訪者に対して自己紹介をお願いします""",
         )
         .then((value) async {
+          // 生成AIからの応答をstateに設定
           state = value;
-          _speaker.speak(value.text); // 返答を読み上げ
+          // 返答を読み上げ
+          _speaker.speak(trimBrackets(value.text));
           return state;
         })
         .catchError((error) {
           logger.e("メッセージ送信エラー: $error"); // エラーをログ出力
-          state = state.copyWith(text: 'メッセージ送信に失敗しました。');
+          final message = 'メッセージ送信に失敗しました。';
+          state = state.copyWith(text: message);
+          // エラーメッセージを読み上げ
+          _speaker.speak(message);
           return state;
         });
 

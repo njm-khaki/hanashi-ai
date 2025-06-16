@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hanashi_ai/enums/generate_ai/generate_ai.dart';
+import 'package:hanashi_ai/utils/parse_generate_ai_text.dart';
 
 part 'chat_model.freezed.dart';
 
@@ -20,6 +21,6 @@ sealed class ChatModel with _$ChatModel {
   Future<ChatModel> sendMessage({required String message}) async {
     final response = await model.client.sendMessage(message: message);
 
-    return copyWith(text: response); // レスポンスでtextを更新
+    return copyWith(text: parseGenerateAiText(response)); // レスポンスでtextを更新
   }
 }
