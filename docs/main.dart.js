@@ -24785,7 +24785,7 @@ return},
 amW(){var s=0,r=A.M(t.H),q,p,o,n,m,l,k
 var $async$amW=A.I(function(a,b){if(a===1)return A.J(b,r)
 while(true)switch(s){case 0:s=2
-return A.R($.EX().xw(".env"),$async$amW)
+return A.R($.EX().xw("env"),$async$amW)
 case 2:if($.Y==null)A.apo()
 q=$.Y
 q.toString
