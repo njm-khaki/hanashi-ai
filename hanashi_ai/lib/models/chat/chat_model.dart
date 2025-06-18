@@ -9,18 +9,54 @@ sealed class ChatModel with _$ChatModel {
   // freezedのプライベートコンストラクタ
   const ChatModel._() : super();
 
+  const factory ChatModel.loading({
+    // 生成AIモデル
+    required GenerateAi model,
+  }) = Loading;
+
+  const factory ChatModel.loadingError({
+    // 生成AIモデル
+    required GenerateAi model,
+  }) = LoadingError;
+
   // チャットモデルのファクトリ
-  const factory ChatModel({
+  const factory ChatModel.idle({
     // チャットテキスト
     required String text,
     // 生成AIモデル
     required GenerateAi model,
-  }) = _ChatModel;
+  }) = Idle;
+
+  // チャットモデルのファクトリ
+  const factory ChatModel.thinking({
+    // 生成AIモデル
+    required GenerateAi model,
+  }) = Thinking;
+
+  const factory ChatModel.panic({
+    // 生成AIモデル
+    required GenerateAi model,
+  }) = Panic;
+
+  const factory ChatModel.speech({
+    // チャットテキスト
+    required String text,
+    // 生成AIモデル
+    required GenerateAi model,
+  }) = Speech;
 
   // メッセージを送信し、レスポンスを受け取って新しいChatModelを返す
   Future<ChatModel> sendMessage({required String message}) async {
-    final response = await model.client.sendMessage(message: message);
+    try {
+      final response = await model.client.sendMessage(message: message);
 
-    return copyWith(text: parseGenerateAiText(response)); // レスポンスでtextを更新
+      return ChatModel.speech(
+        // レスポンスでtextを更新
+        text: parseGenerateAiText(response),
+        model: model,
+      );
+    } catch (error) {
+      return ChatModel.loadingError(model: model);
+    }
   }
 }
