@@ -8,7 +8,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "7d008c70a90ddd60ad7a30209c619f84
 "assets/AssetManifest.json": "79400a738326fc9861e9154faae8319d",
 "assets/assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.ttf": "d7b3c0ac56050de4c152bd8394a16c9a",
 "assets/assets/images/hanashi_ai_icon.jpg": "444ababff8ea7f1c4287594f3ae8e511",
-"assets/env": "97a2ab5db9a2c3cd6d0427265a289cb1",
+"assets/env": "87a063e2a99129825174439a13511fe1",
 "assets/FontManifest.json": "34cf144854b5f350229b0f2bc73a9d38",
 "assets/fonts/MaterialIcons-Regular.otf": "c0ad29d56cfe3890223c02da3c6e0448",
 "assets/NOTICES": "f5bcf3eaf89449eaf95af7f02198b251",
@@ -24,10 +24,10 @@ const RESOURCES = {"assets/AssetManifest.bin": "7d008c70a90ddd60ad7a30209c619f84
 "canvaskit/skwasm.js.symbols": "e72c79950c8a8483d826a7f0560573a1",
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "c70905f92354e9fcb5035b18fc19fbbc",
-"index.html": "ee6448c8dccc8da45d3defe29f04fd90",
-"/": "ee6448c8dccc8da45d3defe29f04fd90",
-"main.dart.js": "d4144df3abfd0fdb748aea7b644e63ce",
+"flutter_bootstrap.js": "15766a604b1990f12fb6e6b5def148c2",
+"index.html": "44ce1c98eaf289fdfee4008a41dc319e",
+"/": "44ce1c98eaf289fdfee4008a41dc319e",
+"main.dart.js": "73c5991c6a236a85eb8eab36579ccfcd",
 "manifest.json": "831769afac2f153a64af04254d44851e",
 "version.json": "3e530c189092e27ff6a90ea01120481e"};
 // The application shell files that are downloaded before a service worker can
