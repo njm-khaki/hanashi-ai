@@ -26,6 +26,25 @@ class _ChatPageState extends ConsumerState<ChatPage>
   }
 
   @override
+  Widget build(BuildContext context) {
+    // チャットの状態を取得
+    final state = ref.watch(chatProvider);
+    // アプリのライフサイクル状態が変化したときの処理
+    final notifier = ref.read(chatProvider.notifier);
+
+    // 画面のUIを構築
+    return Scaffold(
+      // アプリバーのタイトル
+      appBar: AppBar(
+        title: const Text('Hanashi AI'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      // チャットのコンテンツを表示
+      body: ChatContent(state: state, notifier: notifier),
+    );
+  }
+
+  @override
   void dispose() {
     super.dispose();
     // ライフサイクル監視を解除
@@ -40,22 +59,5 @@ class _ChatPageState extends ConsumerState<ChatPage>
     // アプリのライフサイクル状態が変化したときの処理
     final notifier = ref.read(chatProvider.notifier);
     notifier.onChangeAppLifecycleState(state);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // チャットの状態を取得
-    final state = ref.watch(chatProvider);
-
-    // 画面のUIを構築
-    return Scaffold(
-      // アプリバーのタイトル
-      appBar: AppBar(
-        title: const Text('Hanashi AI'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      // チャットのコンテンツを表示
-      body: ChatContent(state: state),
-    );
   }
 }

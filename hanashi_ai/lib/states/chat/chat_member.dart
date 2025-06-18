@@ -1,7 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-import 'package:hanashi_ai/models/chat/chat_model.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart'; // RiverpodのNotifierをインポート
+import 'package:flutter_tts/flutter_tts.dart'; // テキスト読み上げライブラリをインポート
+import 'package:hanashi_ai/models/chat/chat_model.dart'; // チャットモデルをインポート
+import 'package:logger/logger.dart'; // ログ出力用ライブラリをインポート
 
 /// チャットメンバーのインターフェース（抽象クラス）
 abstract interface class ChatMember implements Notifier<ChatModel> {
